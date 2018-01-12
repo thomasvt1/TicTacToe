@@ -11,7 +11,6 @@ void WindowObserver::update(Subject &s)
 {
 	//cout << "WindowObserver update! " << endl;
 	print(s);
-	
 }
 
 WindowObserver::WindowObserver()
@@ -20,9 +19,19 @@ WindowObserver::WindowObserver()
 	console.printf("WindowObserver is waiting for data! \n");
 }
 
+WindowObserver::WindowObserver(enum CConsoleLoggerEx::enumColors col)
+{
+	console.Create("WindowObserver");
+	console.printf("WindowObserver is waiting for data! \n");
+	color = col;
+}
+
 void WindowObserver::print(Subject &s)
 {
-	console.cls(console.COLOR_GREEN);
+	if (color != NULL)
+		console.cls(color);
+	else
+		console.cls();
 	
 	string * board = 0;
 	board = s.get_board();

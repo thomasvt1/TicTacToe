@@ -6,8 +6,10 @@ class WindowObserver : public Observer
 {
 public:
 	void update(Subject &s);
+	WindowObserver(enum CConsoleLoggerEx::enumColors);
 	WindowObserver();
 private:
 	void print(Subject &s);
 	CConsoleLoggerEx console;
+	enum CConsoleLoggerEx::enumColors color;
 };
