@@ -20,9 +20,9 @@ void Subject::notify()
 	}
 }
 
-string * Subject::get_space()
+string * Subject::get_board()
 {
-	return space;
+	return board;
 }
 
 char Subject::get_turn()
@@ -35,29 +35,6 @@ Subject::Subject(void)
 	fillSpace();
 }
 
-void Subject::handleInput() {
-	bool incorrect = true;
-	string place;
-
-	notify();
-
-	cout << endl << endl << "Player " << turn << " Where would you like to put your mark? " << endl;
-
-	while (incorrect) {
-		cin >> place;
-
-		place[0] = toupper(place[0]);
-		string input = place;
-
-		incorrect = !inputCorrect(place);
-
-		if (incorrect)
-			cout << input << " - is not a valid location" << endl;
-	}
-
-	changeField(place);
-}
-
 void Subject::fillSpace()
 {
 	string letter[] = { "A", "B", "C", "D", "E", "F", "G", "H" };
@@ -65,20 +42,15 @@ void Subject::fillSpace()
 	for (int i = 0; i < 64; i++)
 	{
 		int y = i / 8;
-		space[i] = letter[(i / 8)] + to_string(i - (y * 8));
+		board[i] = letter[(i / 8)] + to_string(i - (y * 8));
 	}
 }
 
 void Subject::changeField(string place)
 {
 	for (int i = 0; i < 64; i++)
-		if (place == space[i])
-			space[i] = turn;
-}
-
-void Subject::setTurn(char c)
-{
-	turn = c;
+		if (place == board[i])
+			board[i] = turn;
 }
 
 
@@ -97,9 +69,14 @@ void Subject::switchTurn()
 bool Subject::inputCorrect(string place)
 {
 	for (int i = 0; i < 64; i++)
-		if (place == space[i])
+		if (place == board[i])
 			return true;
 	return false;
+}
+
+bool Subject::isWinner()
+{
+	return winDetection().length() != 0;
 }
 
 string Subject::winDetection()
@@ -112,11 +89,14 @@ string Subject::winDetection()
 		for (int i = 0; i < 16; i += 4)
 		{
 			l = k + i;
-			if (space[l] == space[l + 1] && space[l] == space[l + 2] && space[l] == space[l + 3])
-				win = true;
+			if ((board[l] == board[l + 1] && board[l] == board[l + 2] && board[l] == board[l + 3]) ||
+				(board[l] == board[l + 4] && board[l] == board[l + 8] && board[l] == board[l + 12]) ||
+				(board[l] == board[l + 5] && board[l] == board[l + 10] && board[l] == board[l + 15]) ||
+				(board[l + 3] == board[l + 6] && board[l + 3] == board[l + 9] && board[l + 3] == board[l + 12]))
+			{
+				return board[l];
+			}
 		}
 	}
-	if (win)
-		return space[l];
-	return false;
+	return "";
 }

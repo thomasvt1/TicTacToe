@@ -36,6 +36,9 @@
     <ClInclude Include="ConsoleLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -59,5 +62,10 @@
     <ClCompile Include="ConsoleLoggerHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConsoleLoggerHelper.exe">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

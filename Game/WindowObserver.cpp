@@ -17,16 +17,15 @@ void WindowObserver::update(Subject &s)
 WindowObserver::WindowObserver()
 {
 	console.Create("WindowObserver");
-	console.printf("WindowObserver is waiting for start! \n");
-
+	console.printf("WindowObserver is waiting for data! \n");
 }
 
 void WindowObserver::print(Subject &s)
 {
-	console.cls();
-
-	string * space = 0;
-	space = s.get_space();
+	console.cls(console.COLOR_GREEN);
+	
+	string * board = 0;
+	board = s.get_board();
 
 	int k, l, p;
 
@@ -39,7 +38,7 @@ void WindowObserver::print(Subject &s)
 			for (int i = 0; i < 4; i++)
 			{
 				int kip = k + i + p;
-				string line = space[kip];
+				string line = board[kip];
 				if (line.size() == 1)
 					line += " ";
 

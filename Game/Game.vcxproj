@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="ConsoleLogger.h" />
     <ClInclude Include="Observer.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SoundObserver.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Subject.h" />
@@ -164,6 +165,11 @@
     </ClCompile>
     <ClCompile Include="Subject.cpp" />
     <ClCompile Include="WindowObserver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConsoleLoggerHelper.exe">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
