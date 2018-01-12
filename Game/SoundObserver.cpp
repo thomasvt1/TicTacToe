@@ -7,5 +7,5 @@
 using namespace std;
 
 void SoundObserver::update(Subject &s) {
-	cout << " times updated." << endl;
+	cout << "Soundobserver got update" << endl;
 }

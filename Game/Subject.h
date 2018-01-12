@@ -4,19 +4,29 @@
 #include "string"
 #include "Observer.h"
 
-//class Observer;
+using namespace std;
 
 class Subject
 {
-typedef std::list<Observer*>::iterator iterator;
+typedef list<Observer*>::iterator iterator;
 
 private:
-	std::list<Observer*> observers;
-	std::string name;
+	list<Observer*> observers;
+	string name;
+	string space[64];
+	char turn = 'X';
+	void fillSpace();
+	void switchTurn();
+	void handleInput();
+	void changeField(string place);
+	bool inputCorrect(string place);
+	string winDetection();
+	
 
 public:
 	void add_observer(Observer&);
 	void notify();
-	void set_name(std::string);
-	std::string get_name();
+	char get_turn();
+	string * get_space();
+	Subject();
 };
