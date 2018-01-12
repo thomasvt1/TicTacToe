@@ -7,20 +7,22 @@
 
 using namespace std;
 
-void WindowObserver::update(Subject &s) {
+void WindowObserver::update(Subject &s)
+{
 	//cout << "WindowObserver update! " << endl;
 	print(s);
 	
 }
 
-WindowObserver::WindowObserver() {
+WindowObserver::WindowObserver()
+{
 	console.Create("WindowObserver");
 	console.printf("WindowObserver is waiting for start! \n");
 
 }
 
-void WindowObserver::print(Subject &s) {
-	//system("CLS");
+void WindowObserver::print(Subject &s)
+{
 	console.cls();
 
 	string * space = 0;

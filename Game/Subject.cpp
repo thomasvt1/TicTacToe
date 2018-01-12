@@ -7,25 +7,31 @@
 using namespace std;
 
 
-void Subject::add_observer(Observer& _observer) {
+void Subject::add_observer(Observer& _observer)
+{
 	observers.push_back(&_observer);
 }
 
-void Subject::notify() {
-	for (iterator it = observers.begin(); it != observers.end(); it++) {
+void Subject::notify()
+{
+	for (iterator it = observers.begin(); it != observers.end(); it++)
+	{
 		(*it)->update(*this);
 	}
 }
 
-string * Subject::get_space() {
+string * Subject::get_space()
+{
 	return space;
 }
 
-char Subject::get_turn() {
+char Subject::get_turn()
+{
 	return turn;
 }
 
-Subject::Subject(void) {
+Subject::Subject(void)
+{
 	fillSpace();
 }
 
@@ -52,8 +58,8 @@ void Subject::handleInput() {
 	changeField(place);
 }
 
-void Subject::fillSpace() {
-
+void Subject::fillSpace()
+{
 	string letter[] = { "A", "B", "C", "D", "E", "F", "G", "H" };
 
 	for (int i = 0; i < 64; i++)
@@ -63,18 +69,21 @@ void Subject::fillSpace() {
 	}
 }
 
-void Subject::changeField(string place) {
+void Subject::changeField(string place)
+{
 	for (int i = 0; i < 64; i++)
 		if (place == space[i])
 			space[i] = turn;
 }
 
-void Subject::setTurn(char c) {
+void Subject::setTurn(char c)
+{
 	turn = c;
 }
 
 
-void Subject::switchTurn() {
+void Subject::switchTurn()
+{
 	switch (turn) {
 		case 'X':
 			turn = 'O';
@@ -85,14 +94,16 @@ void Subject::switchTurn() {
 	}
 }
 
-bool Subject::inputCorrect(string place) {
+bool Subject::inputCorrect(string place)
+{
 	for (int i = 0; i < 64; i++)
 		if (place == space[i])
 			return true;
 	return false;
 }
 
-string Subject::winDetection() {
+string Subject::winDetection()
+{
 	int k, l, p;
 	bool win = false;
 	for (int j = 0; j < 4; j++)
