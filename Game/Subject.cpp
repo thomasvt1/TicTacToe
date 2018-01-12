@@ -69,12 +69,19 @@ void Subject::changeField(string place) {
 			space[i] = turn;
 }
 
+void Subject::setTurn(char c) {
+	turn = c;
+}
+
+
 void Subject::switchTurn() {
 	switch (turn) {
 		case 'X':
 			turn = 'O';
+			break;
 		case 'O':
 			turn = 'X';
+			break;
 	}
 }
 

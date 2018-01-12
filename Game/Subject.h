@@ -16,7 +16,6 @@ private:
 	string space[64];
 	char turn = 'X';
 	void fillSpace();
-	void switchTurn();
 	void handleInput();
 	void changeField(string place);
 	bool inputCorrect(string place);
@@ -28,5 +27,7 @@ public:
 	void notify();
 	char get_turn();
 	string * get_space();
+	void switchTurn();
+	void setTurn(char);
 	Subject();
 };
