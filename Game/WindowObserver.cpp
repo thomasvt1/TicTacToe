@@ -9,7 +9,11 @@ using namespace std;
 
 void WindowObserver::update(Subject &s)
 {
-	//cout << "WindowObserver update! " << endl;
+	if (color != NULL)
+		console.cls(color);
+	else
+		console.cls();
+
 	print(s);
 }
 
@@ -17,6 +21,13 @@ WindowObserver::WindowObserver()
 {
 	console.Create("WindowObserver");
 	console.printf("WindowObserver is waiting for data! \n");
+	
+}
+
+WindowObserver::~WindowObserver()
+{
+	console.Close();
+
 }
 
 WindowObserver::WindowObserver(enum CConsoleLoggerEx::enumColors col)
@@ -28,13 +39,7 @@ WindowObserver::WindowObserver(enum CConsoleLoggerEx::enumColors col)
 
 void WindowObserver::print(Subject &s)
 {
-	if (color != NULL)
-		console.cls(color);
-	else
-		console.cls();
-	
-	string * board = 0;
-	board = s.get_board();
+	string * board = s.get_board();
 
 	int k, l, p;
 
@@ -54,19 +59,16 @@ void WindowObserver::print(Subject &s)
 				if (i == 0) {
 					string xyz = "   " + line + " ";
 					console.printf(xyz.c_str());
-					//cout << "   " << line << " ";
 				}
 				else {
 					string xyz = "|  " + line + " ";
 					console.printf(xyz.c_str());
-					//cout << "|  " << line << " ";
 				}
 
 			}
 		}
 		if (o != 3)
 			console.printf("\n  ______________________   _____________________   _____________________   _____________________\n");
-			//cout << "\n" << "  ______________________   _____________________   _____________________   _____________________" << "\n";
 	}
 	console.printf("\n");
 }

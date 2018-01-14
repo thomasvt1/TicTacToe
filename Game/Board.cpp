@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Board.h"
+#include "iostream"
 
 
 Board::Board()
@@ -25,14 +26,23 @@ bool Board::changeField(string place)
 
 void Board::switchTurn()
 {
-	switch (turn) {
-	case 'X':
-		turn = 'O';
-		break;
-	case 'O':
-		turn = 'X';
-		break;
+	char players[] = { 'X', 'O' };
+	int size = (sizeof(players) / sizeof(*players));
+
+	int currentplayer;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (players[i] == turn)
+			currentplayer = i;
 	}
+
+	if (currentplayer == (size - 1))
+		turn = players[0];
+	else
+		turn = players[currentplayer + 1];
+	
+		
 }
 
 
@@ -49,6 +59,7 @@ void Board::fillBoard()
 
 bool Board::inputCorrect(string place)
 {
+	
 	for (int i = 0; i < 64; i++)
 		if (place == board[i])
 			return true;

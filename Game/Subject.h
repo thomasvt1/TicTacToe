@@ -16,6 +16,7 @@ private:
 	string name;
 	Board board;
 	void handleInput();
+	void printHeader();
 
 public:
 	void add_observer(Observer&);
