@@ -29,6 +29,11 @@ string * Subject::get_board()
 	return board.get_board();
 }
 
+void Subject::setPlayers(int players)
+{
+	board.setPlayers(players);
+}
+
 bool Subject::gameloop()
 {
 	system("cls");

@@ -13,4 +13,5 @@ private:
 	void print(Subject &s);
 	CConsoleLoggerEx console;
 	enum CConsoleLoggerEx::enumColors color;
+	void WindowObserver::setupConsole();
 };

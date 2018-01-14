@@ -5,6 +5,7 @@
 
 Board::Board()
 {
+	turn = players[0];
 	fillBoard();
 }
 
@@ -26,7 +27,6 @@ bool Board::changeField(string place)
 
 void Board::switchTurn()
 {
-	char players[] = { 'X', 'O' };
 	int size = (sizeof(players) / sizeof(*players));
 
 	int currentplayer;
@@ -37,7 +37,7 @@ void Board::switchTurn()
 			currentplayer = i;
 	}
 
-	if (currentplayer == (size - 1))
+	if (currentplayer == (playernum - 1))
 		turn = players[0];
 	else
 		turn = players[currentplayer + 1];
@@ -59,7 +59,8 @@ void Board::fillBoard()
 
 bool Board::inputCorrect(string place)
 {
-	
+	if (place.length() != 2)
+		return false;
 	for (int i = 0; i < 64; i++)
 		if (place == board[i])
 			return true;
@@ -74,6 +75,11 @@ bool Board::isWinner()
 char Board::get_turn()
 {
 	return turn;
+}
+
+void Board::setPlayers(int players)
+{
+	playernum = players;
 }
 
 string Board::winDetection()

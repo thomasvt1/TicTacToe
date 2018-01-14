@@ -9,6 +9,7 @@ public:
 	Board();
 	string * get_board();
 	bool changeField(string place);
+	void setPlayers(int players);
 	bool isWinner();
 	bool inputCorrect(string place);
 	void switchTurn();
@@ -16,9 +17,11 @@ public:
 
 
 private:
+	char players[5] = { 'X', 'O' , 'Z', 'S', 'B'};
+	int playernum = 2;
 	string board[64];
 	void fillBoard();
-	char turn = 'X';
+	char turn;
 	string winDetection();
 };
 

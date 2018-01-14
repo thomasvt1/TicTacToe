@@ -19,22 +19,25 @@ void WindowObserver::update(Subject &s)
 
 WindowObserver::WindowObserver()
 {
+	setupConsole();
+}
+
+WindowObserver::WindowObserver(enum CConsoleLoggerEx::enumColors col)
+{
+	setupConsole();
+	color = col;
+}
+
+void WindowObserver::setupConsole()
+{
 	console.Create("WindowObserver");
 	console.printf("WindowObserver is waiting for data! \n");
-	
 }
 
 WindowObserver::~WindowObserver()
 {
 	console.Close();
 
-}
-
-WindowObserver::WindowObserver(enum CConsoleLoggerEx::enumColors col)
-{
-	console.Create("WindowObserver");
-	console.printf("WindowObserver is waiting for data! \n");
-	color = col;
 }
 
 void WindowObserver::print(Subject &s)
