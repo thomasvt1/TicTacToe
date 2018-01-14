@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Board.h" />
     <ClInclude Include="ConsoleLogger.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="resource.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="WindowObserver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="ConsoleLogger.cpp" />
     <ClCompile Include="ConsoleLoggerHelper.cpp" />
     <ClCompile Include="Game.cpp" />

@@ -6,6 +6,11 @@
 
 using namespace std;
 
+Subject::Subject()
+{
+	board = Board();
+}
+
 
 void Subject::add_observer(Observer& _observer)
 {
@@ -22,81 +27,35 @@ void Subject::notify()
 
 string * Subject::get_board()
 {
-	return board;
+	return board.get_board();
 }
 
-char Subject::get_turn()
+bool Subject::gameloop()
 {
-	return turn;
+	handleInput();
+	board.switchTurn();
+	return !board.isWinner();
 }
 
-Subject::Subject(void)
+void Subject::handleInput()
 {
-	fillSpace();
-}
+	bool incorrect = true;
+	string place;
 
-void Subject::fillSpace()
-{
-	string letter[] = { "A", "B", "C", "D", "E", "F", "G", "H" };
+	char turn = board.get_turn();
 
-	for (int i = 0; i < 64; i++)
-	{
-		int y = i / 8;
-		board[i] = letter[(i / 8)] + to_string(i - (y * 8));
+	cout << endl << "Player " << turn << " Where would you like to put your mark? " << endl;
+
+	while (incorrect) {
+		cin >> place;
+
+		place[0] = toupper(place[0]);
+		string input = place;
+
+		incorrect = !board.inputCorrect(place);
+
+		if (incorrect)
+			cout << input << " - is not a valid location" << endl;
 	}
-}
-
-void Subject::changeField(string place)
-{
-	for (int i = 0; i < 64; i++)
-		if (place == board[i])
-			board[i] = turn;
-}
-
-
-void Subject::switchTurn()
-{
-	switch (turn) {
-		case 'X':
-			turn = 'O';
-			break;
-		case 'O':
-			turn = 'X';
-			break;
-	}
-}
-
-bool Subject::inputCorrect(string place)
-{
-	for (int i = 0; i < 64; i++)
-		if (place == board[i])
-			return true;
-	return false;
-}
-
-bool Subject::isWinner()
-{
-	return winDetection().length() != 0;
-}
-
-string Subject::winDetection()
-{
-	int k, l, p;
-	bool win = false;
-	for (int j = 0; j < 4; j++)
-	{
-		k = j * 16;
-		for (int i = 0; i < 16; i += 4)
-		{
-			l = k + i;
-			if ((board[l] == board[l + 1] && board[l] == board[l + 2] && board[l] == board[l + 3]) ||
-				(board[l] == board[l + 4] && board[l] == board[l + 8] && board[l] == board[l + 12]) ||
-				(board[l] == board[l + 5] && board[l] == board[l + 10] && board[l] == board[l + 15]) ||
-				(board[l + 3] == board[l + 6] && board[l + 3] == board[l + 9] && board[l + 3] == board[l + 12]))
-			{
-				return board[l];
-			}
-		}
-	}
-	return "";
+	board.changeField(place);
 }

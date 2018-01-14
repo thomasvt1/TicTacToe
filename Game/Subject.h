@@ -3,6 +3,7 @@
 #include "list"
 #include "string"
 #include "Observer.h"
+#include "Board.h"
 
 using namespace std;
 
@@ -13,19 +14,13 @@ typedef list<Observer*>::iterator iterator;
 private:
 	list<Observer*> observers;
 	string name;
-	string board[64];
-	char turn = 'X';
-	void fillSpace();
-	void changeField(string place);
-	bool inputCorrect(string place);
+	Board board;
+	void handleInput();
 
 public:
 	void add_observer(Observer&);
 	void notify();
-	char get_turn();
 	string * get_board();
-	string winDetection();
-	bool isWinner();
-	void switchTurn();
+	bool gameloop();
 	Subject();
 };
