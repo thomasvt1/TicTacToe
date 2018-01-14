@@ -169,6 +169,7 @@
   <ItemGroup>
     <None Include="ConsoleLoggerHelper.exe">
       <DeploymentContent>true</DeploymentContent>
+      <FileType>RES</FileType>
     </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
