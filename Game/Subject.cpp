@@ -33,6 +33,11 @@ string * Subject::get_board()
 	return board.get_board();
 }
 
+string Subject::get_winner()
+{
+	return board.winDetection();
+}
+
 void Subject::setPlayers(int players)
 {
 	board.setPlayers(players);

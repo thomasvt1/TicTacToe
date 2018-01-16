@@ -25,5 +25,6 @@ public:
 	void notify();
 	string * get_board();
 	void setPlayers(int);
+	string get_winner();
 	bool gameloop();
 };
