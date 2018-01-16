@@ -17,11 +17,11 @@ public:
 	char get_turn();
 	string winDetection();
 
-
 private:
 	char players[5] = { 'X', 'O' , 'Z', 'S', 'B'};
-	int playernum = 2;
+	int turn = 0;
+	int playercount = 2;
 	string board[64];
 	void fillBoard();
-	char turn;
+	//char turn;
 };

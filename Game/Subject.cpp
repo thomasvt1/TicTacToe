@@ -20,6 +20,11 @@ void Subject::add_observer(Observer& _observer)
 	observers.push_back(&_observer);
 }
 
+void Subject::clear_observers()
+{
+	observers.clear();
+}
+
 void Subject::notify()
 {
 	for (iterator it = observers.begin(); it != observers.end(); it++)

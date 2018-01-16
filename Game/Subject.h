@@ -22,6 +22,7 @@ public:
 	Subject();
 	~Subject();
 	void add_observer(Observer&);
+	void clear_observers();
 	void notify();
 	string * get_board();
 	void setPlayers(int);

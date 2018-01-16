@@ -5,7 +5,6 @@
 
 Board::Board()
 {
-	turn = players[0];
 	fillBoard();
 }
 
@@ -23,7 +22,7 @@ bool Board::changeField(string place)
 	for (int i = 0; i < 64; i++)
 		if (place == board[i])
 		{
-			board[i] = turn;
+			board[i] = players[turn];
 			return true;
 		}
 	return false;
@@ -31,24 +30,10 @@ bool Board::changeField(string place)
 
 void Board::switchTurn()
 {
-	int size = (sizeof(players) / sizeof(*players));
-
-	int currentplayer;
-
-	for (int i = 0; i < size; i++)
-	{
-		if (players[i] == turn)
-			currentplayer = i;
-	}
-
-	if (currentplayer == (playernum - 1))
-		turn = players[0];
-	else
-		turn = players[currentplayer + 1];
-
-
+	turn += 1;
+	if (turn >= playercount)
+		turn = 0;
 }
-
 
 void Board::fillBoard()
 {
@@ -78,12 +63,12 @@ bool Board::isWinner()
 
 char Board::get_turn()
 {
-	return turn;
+	return players[turn];
 }
 
 void Board::setPlayers(int players)
 {
-	playernum = players;
+	playercount = players;
 }
 
 string Board::winDetection()
@@ -147,30 +132,3 @@ string Board::winDetection()
 	}
 	return "";
 }
-
-	/*
-	string Board::winDetection()
-	{
-		int k, l, p;
-		bool win = false;
-		for (int j = 0; j < 4; j++)
-		{
-			k = j * 16;
-			for (int i = 0; i < 16; i += 4)
-			{
-				l = k + i;
-				if ((board[l] == board[l + 1] && board[l] == board[l + 2] && board[l] == board[l + 3]) ||
-					(board[l] == board[l + 4] && board[l] == board[l + 8] && board[l] == board[l + 12]) ||
-					(board[l] == board[l + 5] && board[l] == board[l + 10] && board[l] == board[l + 15]) ||
-					(board[l + 3] == board[l + 6] && board[l + 3] == board[l + 9] && board[l + 3] == board[l + 12]) ||
-					(board[l] == board[l + 16] && board[l] == board[l + 32] && board[l] == board[l + 48]) ||
-					(board[l] == board[l + 21] && board[l] == board[l + 42] && board[l] == board[l + 63]) ||
-					(board[12] == board[25] && board[12] == board[38] && board[12] == board[51]))
-				{
-					return board[l];
-				}
-			}
-		}
-		return "";
-	}
-	*/
