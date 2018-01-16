@@ -23,5 +23,4 @@ private:
 	int playercount = 2;
 	string board[64];
 	void fillBoard();
-	//char turn;
 };
