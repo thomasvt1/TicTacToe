@@ -95,7 +95,10 @@ string Board::winDetection()
 			if ((board[l] == board[l + 1] && board[l] == board[l + 2] && board[l] == board[l + 3]) ||
 				(board[l] == board[l + 4] && board[l] == board[l + 8] && board[l] == board[l + 12]) ||
 				(board[l] == board[l + 5] && board[l] == board[l + 10] && board[l] == board[l + 15]) ||
-				(board[l + 3] == board[l + 6] && board[l + 3] == board[l + 9] && board[l + 3] == board[l + 12]))
+				(board[l + 3] == board[l + 6] && board[l + 3] == board[l + 9] && board[l + 3] == board[l + 12]) ||
+				(board[l] == board[l + 16] && board[l] == board[l + 32] && board[l] == board[l + 48]) ||
+				(board[l] == board[l + 21] && board[l] == board[l + 42] && board[l] == board[l + 63]) ||
+				(board[12] == board[25] && board[12] == board[38] && board[12] == board[51]))
 			{
 				return board[l];
 			}
