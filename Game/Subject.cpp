@@ -84,9 +84,7 @@ void Subject::handleInput()
 	bool incorrect = true;
 	string place;
 
-	char turn = board.get_turn();
-
-	cout << endl << "Player " << turn << " Where would you like to put your mark? " << endl;
+	cout << endl << "Player " << board.get_turn() << " Where would you like to put your mark? " << endl;
 
 	while (incorrect) {
 		cin >> place;
