@@ -19,10 +19,11 @@ private:
 	void printHeader();
 
 public:
+	Subject();
+	~Subject();
 	void add_observer(Observer&);
 	void notify();
 	string * get_board();
 	void setPlayers(int);
 	bool gameloop();
-	Subject();
 };

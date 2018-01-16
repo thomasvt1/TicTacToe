@@ -7,6 +7,14 @@
 
 using namespace std;
 
+SoundObserver::SoundObserver()
+{
+}
+
+SoundObserver::~SoundObserver()
+{
+}
+
 void SoundObserver::update(Subject &s)
 {
 	Beep(523, 250);

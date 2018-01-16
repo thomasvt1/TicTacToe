@@ -9,6 +9,10 @@ Board::Board()
 	fillBoard();
 }
 
+Board::~Board()
+{
+}
+
 string * Board::get_board()
 {
 	return board;

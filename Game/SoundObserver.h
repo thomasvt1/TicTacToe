@@ -5,5 +5,7 @@ class Subject;
 class SoundObserver : public Observer
 {
 public:
+	SoundObserver();
+	~SoundObserver();
 	void update(Subject &s);
 };

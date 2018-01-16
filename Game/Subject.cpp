@@ -11,6 +11,10 @@ Subject::Subject()
 	board = Board();
 }
 
+Subject::~Subject()
+{
+}
+
 void Subject::add_observer(Observer& _observer)
 {
 	observers.push_back(&_observer);
