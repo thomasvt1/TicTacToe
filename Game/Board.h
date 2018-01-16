@@ -9,13 +9,14 @@ public:
 	Board();
 	~Board();
 	string * get_board();
-	bool changeField(string);
-	void setPlayers(int);
-	bool isWinner();
-	bool inputCorrect(string);
-	void switchTurn();
+	bool changefield(string);
+	void set_players(int);
+	bool is_winner();
+	bool input_correct(string);
+	void switch_turn();
 	char get_turn();
-	string winDetection();
+	string win_detection();
+	int get_player_int();
 
 private:
 	char players[5] = { 'X', 'O' , 'Z', 'S', 'B'};

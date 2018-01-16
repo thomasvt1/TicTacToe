@@ -15,8 +15,8 @@ private:
 	list<Observer*> observers;
 	string name;
 	Board board;
-	void handleInput();
-	void printHeader();
+	void handle_input();
+	void print_header();
 
 public:
 	Subject();
@@ -25,7 +25,8 @@ public:
 	void clear_observers();
 	void notify();
 	string * get_board();
-	void setPlayers(int);
+	void set_players(int);
+	Board get_board_object();
 	string get_winner();
 	bool gameloop();
 };

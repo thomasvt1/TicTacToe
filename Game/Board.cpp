@@ -17,7 +17,7 @@ string * Board::get_board()
 	return board;
 }
 
-bool Board::changeField(string place)
+bool Board::changefield(string place)
 {
 	for (int i = 0; i < 64; i++)
 		if (place == board[i])
@@ -28,7 +28,12 @@ bool Board::changeField(string place)
 	return false;
 }
 
-void Board::switchTurn()
+int Board::get_player_int()
+{
+	return turn;
+}
+
+void Board::switch_turn()
 {
 	turn += 1;
 	if (turn >= playercount)
@@ -46,7 +51,7 @@ void Board::fillBoard()
 	}
 }
 
-bool Board::inputCorrect(string place)
+bool Board::input_correct(string place)
 {
 	if (place.length() != 2)
 		return false;
@@ -56,9 +61,9 @@ bool Board::inputCorrect(string place)
 	return false;
 }
 
-bool Board::isWinner()
+bool Board::is_winner()
 {
-	return winDetection().length() != 0;
+	return win_detection().length() != 0;
 }
 
 char Board::get_turn()
@@ -66,12 +71,12 @@ char Board::get_turn()
 	return players[turn];
 }
 
-void Board::setPlayers(int players)
+void Board::set_players(int players)
 {
 	playercount = players;
 }
 
-string Board::winDetection()
+string Board::win_detection()
 {
 	int k, l, p;
 	bool win = false;

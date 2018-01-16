@@ -40,26 +40,31 @@ string * Subject::get_board()
 
 string Subject::get_winner()
 {
-	return board.winDetection();
+	return board.win_detection();
 }
 
-void Subject::setPlayers(int players)
+void Subject::set_players(int players)
 {
-	board.setPlayers(players);
+	board.set_players(players);
+}
+
+Board Subject::get_board_object()
+{
+	return board;
 }
 
 bool Subject::gameloop()
 {
 	system("cls");
 	
-	printHeader();
+	print_header();
 
-	handleInput();
-	board.switchTurn();
-	return !board.isWinner();
+	handle_input();
+	board.switch_turn();
+	return !board.is_winner();
 }
 
-void Subject::printHeader()
+void Subject::print_header()
 {
 	cout << R"(___________.__                                 /\    _____                        .__                
 \__    ___/|  |__   ____   _____ _____    _____)/   /  _  \   _____ _____  _______|__| ____    ____  
@@ -79,7 +84,7 @@ void Subject::printHeader()
 	cout << string(10, '\n');
 }
 
-void Subject::handleInput()
+void Subject::handle_input()
 {
 	bool incorrect = true;
 	string place;
@@ -92,10 +97,10 @@ void Subject::handleInput()
 		place[0] = toupper(place[0]);
 		string input = place;
 
-		incorrect = !board.inputCorrect(place);
+		incorrect = !board.input_correct(place);
 
 		if (incorrect)
 			cout << input << " - is not a valid location" << endl;
 	}
-	board.changeField(place);
+	board.changefield(place);
 }

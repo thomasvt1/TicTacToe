@@ -17,5 +17,6 @@ SoundObserver::~SoundObserver()
 
 void SoundObserver::update(Subject &s)
 {
-	Beep(523, 250);
+	int beep = 200 + (50* s.get_board_object().get_player_int());
+	Beep(beep, 250);
 }
