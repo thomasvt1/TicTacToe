@@ -80,7 +80,7 @@ bool Board::is_tie()
 {
 	for (int i = 0; i < sizeof(board) / sizeof(board[0]); i++)
 	{
-		if (board[i].length == 1)
+		if (board[i].length() == 2)
 			return false;
 	}
 	return true;

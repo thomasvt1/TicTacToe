@@ -62,7 +62,7 @@ bool Subject::gameloop()
 
 	system("cls");
 
-	return !board.is_winner();
+	return (!board.is_winner() && !board.is_tie());
 }
 
 void Subject::print_header()
