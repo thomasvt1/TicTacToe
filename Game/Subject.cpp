@@ -29,7 +29,7 @@ void Subject::notify()
 {
 	for (iterator it = observers.begin(); it != observers.end(); it++)
 	{
-		(*it)->update(*this);
+		(*it)->update();
 	}
 }
 
@@ -55,17 +55,19 @@ Board Subject::get_board_object()
 
 bool Subject::gameloop()
 {
-	system("cls");
-	
 	print_header();
 
 	handle_input();
 	board.switch_turn();
+
+	system("cls");
+
 	return !board.is_winner();
 }
 
 void Subject::print_header()
 {
+	cout << string(2, '\n');
 	cout << R"(___________.__                                 /\    _____                        .__                
 \__    ___/|  |__   ____   _____ _____    _____)/   /  _  \   _____ _____  _______|__| ____    ____  
   |    |   |  |  \ /  _ \ /     \\__  \  /  ___/   /  /_\  \ /     \\__  \ \___   /  |/    \  / ___\ 
@@ -81,7 +83,7 @@ void Subject::print_header()
   \_/ |_|\___|   \_/\__,_|\___|   \_/\___/ \___|     |_/___/   \/   \/\_____/ \_|   \_____/\___/\____/ 
                                                                                                        
                                                                                                        )" << endl;
-	cout << string(10, '\n');
+	cout << string(3, '\n');
 }
 
 void Subject::handle_input()

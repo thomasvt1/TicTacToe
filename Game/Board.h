@@ -17,6 +17,7 @@ public:
 	char get_turn();
 	string win_detection();
 	int get_player_int();
+	bool is_tie();
 
 private:
 	char players[5] = { 'X', 'O' , 'Z', 'S', 'B'};
