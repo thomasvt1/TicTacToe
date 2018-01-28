@@ -7,22 +7,22 @@
 
 using namespace std;
 
-void WindowObserver::update(Subject &s)
+void WindowObserver::update()
 {
 	if (color != NULL)
 		console.cls(color);
 	else
 		console.cls();
 
-	print(s);
+	print();
 }
 
-WindowObserver::WindowObserver()
+WindowObserver::WindowObserver(Subject &sub) : s(sub)
 {
 	setupConsole();
 }
 
-WindowObserver::WindowObserver(enum CConsoleLoggerEx::enumColors col)
+WindowObserver::WindowObserver(Subject &sub, enum CConsoleLoggerEx::enumColors col) : s(sub)
 {
 	setupConsole();
 	color = col;
@@ -40,7 +40,7 @@ WindowObserver::~WindowObserver()
 
 }
 
-void WindowObserver::print(Subject &s)
+void WindowObserver::print()
 {
 	string * board = s.get_board();
 
